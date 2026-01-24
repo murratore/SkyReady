@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AstroWeather</string>
+    <string name="title_activity_main">AstroWeather</string>
+    <string name="package_name">ch.astroweather.app</string>
+    <string name="custom_url_scheme">ch.astroweather.app</string>
+</resources>
