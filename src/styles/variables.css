@@ -1,0 +1,146 @@
+/* AstroWeather Design System - CSS Variables */
+
+:root {
+  /* ===== Colors - Dark Theme (Default) ===== */
+  --color-bg-primary: #0a0e14;
+  --color-bg-secondary: #121820;
+  --color-bg-tertiary: #1a2230;
+  --color-bg-elevated: #232d3f;
+  
+  --color-text-primary: #e6e8eb;
+  --color-text-secondary: #8b95a5;
+  --color-text-muted: #5a6578;
+  
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-light: rgba(255, 255, 255, 0.12);
+  
+  /* Accent Colors */
+  --color-accent: #4da6ff;
+  --color-accent-hover: #6bb5ff;
+  --color-accent-glow: rgba(77, 166, 255, 0.25);
+  --color-accent-subtle: rgba(77, 166, 255, 0.1);
+  
+  /* Score Colors */
+  --color-score-perfect: #00d68f;
+  --color-score-perfect-bg: rgba(0, 214, 143, 0.15);
+  --color-score-good: #7ed321;
+  --color-score-good-bg: rgba(126, 211, 33, 0.15);
+  --color-score-moderate: #f5a623;
+  --color-score-moderate-bg: rgba(245, 166, 35, 0.15);
+  --color-score-poor: #ff6b6b;
+  --color-score-poor-bg: rgba(255, 107, 107, 0.15);
+  --color-score-bad: #d0021b;
+  --color-score-bad-bg: rgba(208, 2, 27, 0.15);
+  
+  /* Status Colors */
+  --color-success: #00d68f;
+  --color-warning: #f5a623;
+  --color-error: #ff6b6b;
+  --color-info: #4da6ff;
+  
+  /* Moon Color */
+  --color-moon: #ffeaa7;
+  --color-moon-glow: rgba(255, 234, 167, 0.3);
+  
+  /* ===== Typography ===== */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.25rem;    /* 20px */
+  --font-size-xl: 1.5rem;     /* 24px */
+  --font-size-2xl: 2rem;      /* 32px */
+  --font-size-3xl: 3rem;      /* 48px */
+  --font-size-score: 4.5rem;  /* 72px - Main score */
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* ===== Spacing ===== */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  
+  /* ===== Border Radius ===== */
+  --radius-sm: 0.375rem;  /* 6px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-2xl: 1.5rem;   /* 24px */
+  --radius-full: 9999px;
+  
+  /* ===== Shadows ===== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px var(--color-accent-glow);
+  --shadow-score-glow: 0 0 40px var(--color-accent-glow);
+  
+  /* ===== Glassmorphism ===== */
+  --glass-bg: rgba(18, 24, 32, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(16px);
+  
+  /* ===== Transitions ===== */
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+  --transition-slower: 500ms ease;
+  
+  /* ===== Z-Index ===== */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal-backdrop: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  
+  /* ===== Layout ===== */
+  --header-height: 60px;
+  --max-width: 480px;
+  --max-width-tablet: 720px;
+  --max-width-desktop: 1200px;
+}
+
+/* ===== Light Theme ===== */
+[data-theme="light"] {
+  --color-bg-primary: #f5f7fa;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #e9ecf0;
+  --color-bg-elevated: #ffffff;
+  
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #a0aec0;
+  
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-light: rgba(0, 0, 0, 0.12);
+  
+  --color-accent: #3182ce;
+  --color-accent-hover: #2b6cb0;
+  --color-accent-glow: rgba(49, 130, 206, 0.25);
+  --color-accent-subtle: rgba(49, 130, 206, 0.1);
+  
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.2);
+}
