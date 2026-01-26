@@ -59,14 +59,20 @@ function formatDayLabel(dateStr, index) {
     if (index === 0) return 'Jetzt';
 
     try {
-        const date = new Date(dateStr);
+        // Parse YYYY-MM-DD as local midnight (not UTC) to avoid timezone shift
+        const parts = dateStr.split('-');
+        const date = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
         const today = new Date();
+        today.setHours(0, 0, 0, 0);
         const tomorrow = new Date(today);
         tomorrow.setDate(tomorrow.getDate() + 1);
 
-        if (date.toDateString() === today.toDateString()) {
+        const dateNormalized = new Date(date);
+        dateNormalized.setHours(0, 0, 0, 0);
+
+        if (dateNormalized.getTime() === today.getTime()) {
             return 'Heute';
-        } else if (date.toDateString() === tomorrow.toDateString()) {
+        } else if (dateNormalized.getTime() === tomorrow.getTime()) {
             return 'Morgen';
         }
 
