@@ -272,12 +272,12 @@ class SkyReadyApp {
 
         this.state.conditions = conditions;
 
-        // Calculate score
-        const score = scoreService.calculateScore(conditions, this.state.settings.photographyMode);
-        this.state.score = score;
-
-        // Build forecast data
+        // Build forecast data first (night-hour averages)
         this.buildForecastData(weatherData, astroData, astronomicalData);
+
+        // Use the selected day's forecast score for the main card
+        // This ensures the main card and forecast tab show the same score
+        this.syncMainScoreWithForecast();
 
         // Update UI
         this.updateUI();
@@ -465,7 +465,39 @@ class SkyReadyApp {
     selectDay(dayIndex) {
         this.state.selectedDay = dayIndex;
         updateSelectedDay(this.elements.forecastTimeline, dayIndex);
-        this.updateChart();
+
+        // Sync main card score with the newly selected day
+        this.syncMainScoreWithForecast();
+        this.updateUI();
+    }
+
+    /**
+     * Sync the main card score with the selected forecast day's night-hour average.
+     * This ensures the prominent score and the forecast tab always agree.
+     */
+    syncMainScoreWithForecast() {
+        const selectedForecast = this.state.forecast[this.state.selectedDay];
+        if (!selectedForecast) return;
+
+        // Build a score object that matches what ScoreCard expects
+        const nightScore = selectedForecast.overallScore;
+        const rating = scoreService._getScoreRating
+            ? scoreService._getScoreRating(nightScore)
+            : this.getScoreRating(nightScore);
+
+        // Recalculate a full score from the current conditions for breakdown/warnings,
+        // but override the overall score with the night-hour average
+        const baseScore = scoreService.calculateScore(
+            this.state.conditions,
+            this.state.settings.photographyMode
+        );
+
+        this.state.score = {
+            ...baseScore,
+            overallScore: nightScore,
+            scoreRating: rating,
+            scoreUncertainty: selectedForecast.scoreUncertainty || baseScore.scoreUncertainty
+        };
     }
 
     async refreshData() {
