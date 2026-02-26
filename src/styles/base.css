@@ -168,15 +168,11 @@ button:disabled {
     gap: var(--space-4);
 }
 
-.loading-logo {
-    font-size: 4rem;
+.loading-logo-img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
     animation: pulse 2s ease-in-out infinite;
-}
-
-.loading-text {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-primary);
 }
 
 .loading-spinner {
