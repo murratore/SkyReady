@@ -9,7 +9,7 @@ export default defineConfig({
       manifest: {
         name: 'SkyReady',
         short_name: 'SkyReady',
-        description: 'Weather conditions for astrophotography - Switzerland & Alps',
+        description: 'Weather conditions for astrophotography',
         theme_color: '#0a0e14',
         background_color: '#0a0e14',
         display: 'standalone',
