@@ -9,7 +9,7 @@ export function createHeader({ onSettingsClick, onRefresh }) {
 
   header.innerHTML = `
     <div class="header-logo">
-      <img src="/icons/Logo.png" alt="SkyReady" class="header-logo-img">
+      <img src="/icons/logo-header.png" alt="SkyReady" class="header-logo-img">
     </div>
     <div class="header-actions">
       <button class="btn btn--icon btn--ghost" id="refresh-btn" title="Aktualisieren">
