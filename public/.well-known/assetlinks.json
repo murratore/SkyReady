@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "net.skyready.twa",
-        "sha256_cert_fingerprints": ["B3:5D:36:65:EF:83:03:3D:70:FC:05:C2:5A:07:F2:94:D2:61:98:AA:A3:24:3B:C3:EF:74:A8:BB:80:21:29:98"]
+        "sha256_cert_fingerprints": ["75:2F:82:4D:FD:1F:8A:D2:C1:12:8E:2D:0B:3D:1F:88:D5:4E:93:8A:BB:A9:35:24:54:A2:D6:57:97:C7:39:5A"]
       }
     }]
