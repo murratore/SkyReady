@@ -62,7 +62,7 @@ class LocationService {
 
             const response = await fetch(url, {
                 headers: {
-                    'User-Agent': 'AstroWeather PWA/1.0'
+                    'User-Agent': 'SkyReady PWA/1.0'
                 }
             });
 

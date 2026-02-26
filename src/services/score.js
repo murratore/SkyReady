@@ -1,6 +1,6 @@
 /**
  * Score Service
- * Calculates the AstroWeather score based on weather conditions and photography mode
+ * Calculates the SkyReady score based on weather conditions and photography mode
  */
 
 // Score weights by photography mode

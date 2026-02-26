@@ -1,4 +1,4 @@
-package ch.astroweather.app;
+package ch.skyready.app;
 
 import com.getcapacitor.BridgeActivity;
 

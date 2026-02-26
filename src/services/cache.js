@@ -3,7 +3,7 @@
  * Handles caching of API responses and other data with TTL support
  */
 
-const CACHE_PREFIX = 'astroweather_cache_';
+const CACHE_PREFIX = 'skyready_cache_';
 const DEFAULT_TTL = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
 
 class CacheService {

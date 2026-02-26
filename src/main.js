@@ -1,5 +1,5 @@
 /**
- * AstroWeather PWA - Entry Point
+ * SkyReady PWA - Entry Point
  * Initializes the application and registers service worker
  */
 
@@ -150,4 +150,4 @@ window.fetch = function (...args) {
     return originalFetch.apply(this, args);
 };
 
-console.log('🌟 AstroWeather PWA initialized');
+console.log('🌟 SkyReady PWA initialized');

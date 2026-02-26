@@ -1,5 +1,5 @@
 {
-  "appId": "ch.astroweather.app",
-  "appName": "AstroWeather",
+  "appId": "ch.skyready.app",
+  "appName": "SkyReady",
   "webDir": "dist"
 }

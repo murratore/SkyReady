@@ -7,8 +7,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'icons/*.png'],
       manifest: {
-        name: 'AstroWeather',
-        short_name: 'AstroWeather',
+        name: 'SkyReady',
+        short_name: 'SkyReady',
         description: 'Weather conditions for astrophotography - Switzerland & Alps',
         theme_color: '#0a0e14',
         background_color: '#0a0e14',

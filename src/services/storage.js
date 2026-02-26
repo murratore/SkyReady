@@ -4,9 +4,9 @@
  */
 
 const STORAGE_KEYS = {
-    SETTINGS: 'astroweather_settings',
-    FAVORITES: 'astroweather_favorites',
-    LAST_LOCATION: 'astroweather_last_location'
+    SETTINGS: 'skyready_settings',
+    FAVORITES: 'skyready_favorites',
+    LAST_LOCATION: 'skyready_last_location'
 };
 
 const DEFAULT_SETTINGS = {

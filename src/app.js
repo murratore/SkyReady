@@ -1,5 +1,5 @@
 /**
- * AstroWeather PWA - Main Application
+ * SkyReady PWA - Main Application
  * Orchestrates all components and manages application state
  */
 
@@ -23,7 +23,7 @@ import scoreService from './services/score.js';
 import storageService from './services/storage.js';
 import cacheService from './services/cache.js';
 
-class AstroWeatherApp {
+class SkyReadyApp {
     constructor() {
         // State
         this.state = {
@@ -626,7 +626,7 @@ class AstroWeatherApp {
 
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    window.app = new AstroWeatherApp();
+    window.app = new SkyReadyApp();
 });
 
-export default AstroWeatherApp;
+export default SkyReadyApp;

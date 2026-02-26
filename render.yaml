@@ -3,7 +3,7 @@
 
 services:
   - type: web
-    name: AstroWeather
+    name: SkyReady
     runtime: static
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist

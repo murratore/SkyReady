@@ -1,10 +1,10 @@
-# 🌟 AstroWeather
+# 🌟 SkyReady
 
 > Weather conditions for astrophotography – optimized for Switzerland & the Alps
 
 A Progressive Web App (PWA) that helps astrophotographers plan their observation sessions by providing an **Astro Score** (0-100) based on cloud cover, seeing, transparency, and moon phase.
 
-![AstroWeather Screenshot](public/icons/icon-192.png)
+![SkyReady Screenshot](public/icons/icon-192.png)
 
 ## ✨ Features
 
