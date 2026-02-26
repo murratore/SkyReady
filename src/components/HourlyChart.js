@@ -64,6 +64,61 @@ export function renderHourlyChart(container, { hourlyData, mode }) {
     const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
     const lineColor = getScoreGradientColor(avgScore);
 
+    const nowTime = Date.now();
+
+    const nowLinePlugin = {
+        id: 'nowLine',
+        beforeDraw: (chart) => {
+            const x = chart.scales.x;
+            const { top, bottom } = chart.chartArea;
+            
+            let nowX = null;
+            for (let i = 0; i < nightData.length - 1; i++) {
+                const t1 = new Date(nightData[i].timestamp).getTime();
+                const t2 = new Date(nightData[i + 1].timestamp).getTime();
+                if (nowTime >= t1 && nowTime <= t2) {
+                    const px1 = x.getPixelForTick(i);
+                    const px2 = x.getPixelForTick(i + 1);
+                    const ratio = (nowTime - t1) / (t2 - t1);
+                    nowX = px1 + ratio * (px2 - px1);
+                    break;
+                }
+            }
+            // Check if now is exactly on the last tick
+            if (nowX === null && nightData.length > 0) {
+                const lastT = new Date(nightData[nightData.length - 1].timestamp).getTime();
+                if (Math.abs(nowTime - lastT) < 60000) {
+                    nowX = x.getPixelForTick(nightData.length - 1);
+                }
+            }
+            
+            if (nowX !== null) {
+                const c = chart.ctx;
+                c.save();
+                c.beginPath();
+                c.moveTo(nowX, top);
+                c.lineTo(nowX, bottom);
+                c.lineWidth = 1;
+                c.strokeStyle = textMutedColor;
+                c.setLineDash([4, 4]);
+                c.stroke();
+                
+                c.fillStyle = chartTextColor;
+                c.font = '11px sans-serif';
+                c.textAlign = 'center';
+                c.textBaseline = 'top';
+                const text = 'Jetzt';
+                const metrics = c.measureText(text);
+                c.fillStyle = bgColor;
+                c.fillRect(nowX - metrics.width / 2 - 4, top, metrics.width + 8, 16);
+                
+                c.fillStyle = chartTextColor;
+                c.fillText(text, nowX, top + 2);
+                c.restore();
+            }
+        }
+    };
+
     chartInstance = new Chart(ctx, {
         type: 'line',
         data: {
@@ -93,19 +148,39 @@ export function renderHourlyChart(container, { hourlyData, mode }) {
                     label: 'Score',
                     data: scores,
                     fill: false,
-                    borderColor: lineColor,
-                    backgroundColor: lineColor,
                     borderWidth: 3,
-                    pointRadius: 5,
-                    pointBackgroundColor: lineColor,
-                    pointBorderColor: '#1a202c',
+                    tension: 0.4,
+                    segment: {
+                        borderColor: (context) => {
+                            if (context.p1DataIndex === undefined) return lineColor;
+                            const time1 = new Date(nightData[context.p1DataIndex]?.timestamp).getTime();
+                            return time1 <= nowTime ? textMutedColor : lineColor;
+                        },
+                        borderDash: (context) => {
+                            if (context.p1DataIndex === undefined) return undefined;
+                            const time1 = new Date(nightData[context.p1DataIndex]?.timestamp).getTime();
+                            return time1 <= nowTime ? undefined : [5, 5];
+                        }
+                    },
+                    pointBackgroundColor: (context) => {
+                        const time = new Date(nightData[context.dataIndex]?.timestamp).getTime();
+                        return time < nowTime ? textMutedColor : lineColor;
+                    },
+                    pointBorderColor: (context) => {
+                        const time = new Date(nightData[context.dataIndex]?.timestamp).getTime();
+                        return time < nowTime ? textMutedColor : bgColor;
+                    },
+                    pointRadius: (context) => {
+                        const time = new Date(nightData[context.dataIndex]?.timestamp).getTime();
+                        return time < nowTime ? 3 : 5;
+                    },
                     pointBorderWidth: 2,
                     pointHoverRadius: 7,
-                    pointHoverBorderWidth: 3,
-                    tension: 0.4
+                    pointHoverBorderWidth: 3
                 }
             ]
         },
+        plugins: [nowLinePlugin],
         options: {
             responsive: true,
             maintainAspectRatio: false,
