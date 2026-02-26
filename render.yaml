@@ -8,6 +8,10 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true
+    routes:
+      - type: rewrite
+        source: /.well-known/*
+        destination: /.well-known/*
     headers:
       - path: /*
         name: Cache-Control
@@ -18,3 +22,6 @@ services:
       - path: /manifest.webmanifest
         name: Cache-Control
         value: no-cache
+      - path: /.well-known/*
+        name: Content-Type
+        value: application/json
