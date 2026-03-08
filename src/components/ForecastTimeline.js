@@ -55,12 +55,14 @@ export function renderTabs(container, { days, selectedDay, onDaySelect }) {
     });
 }
 
+const WOCHENTAGE = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+
 function formatDayLabel(dateStr, index) {
     try {
         // Parse YYYY-MM-DD as local midnight (not UTC) to avoid timezone shift
         const parts = dateStr.split('-');
         const date = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-        const weekday = date.toLocaleDateString('de-CH', { weekday: 'short' });
+        const weekday = WOCHENTAGE[date.getDay()];
 
         if (index === 0) return `${weekday} Jetzt`;
 
@@ -78,7 +80,7 @@ function formatDayLabel(dateStr, index) {
             return `${weekday} Morgen`;
         }
 
-        return date.toLocaleDateString('de-CH', { weekday: 'short', day: 'numeric' });
+        return `${weekday} ${date.getDate()}.`;
     } catch (e) {
         return `Tag ${index}`;
     }
