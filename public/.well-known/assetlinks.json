@@ -1,8 +1,14 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "net.skyready.twa",
-        "sha256_cert_fingerprints": ["75:2F:82:4D:FD:1F:8A:D2:C1:12:8E:2D:0B:3D:1F:88:D5:4E:93:8A:BB:A9:35:24:54:A2:D6:57:97:C7:39:5A"]
-      }
-    }]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "net.skyready.twa",
+      "sha256_cert_fingerprints": [
+        "06:09:5B:4A:15:DD:83:8F:32:98:5A:21:C6:66:4D:A3:09:ED:42:F3:76:2D:0B:2B:A2:BC:A4:D8:94:FE:14:3C"
+      ]
+    }
+  }
+]
