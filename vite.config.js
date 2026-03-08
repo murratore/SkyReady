@@ -74,7 +74,7 @@ export default defineConfig({
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/api\.open-meteo\.com\/.*/i,
-            handler: 'CacheFirst',
+            handler: 'NetworkFirst',
             options: {
               cacheName: 'openmeteo-cache',
               expiration: {
@@ -88,7 +88,7 @@ export default defineConfig({
           },
           {
             urlPattern: /^https:\/\/www\.7timer\.info\/.*/i,
-            handler: 'CacheFirst',
+            handler: 'NetworkFirst',
             options: {
               cacheName: 'seventimer-cache',
               expiration: {
