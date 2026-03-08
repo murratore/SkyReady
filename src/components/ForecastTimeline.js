@@ -56,12 +56,14 @@ export function renderTabs(container, { days, selectedDay, onDaySelect }) {
 }
 
 function formatDayLabel(dateStr, index) {
-    if (index === 0) return 'Jetzt';
-
     try {
         // Parse YYYY-MM-DD as local midnight (not UTC) to avoid timezone shift
         const parts = dateStr.split('-');
         const date = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+        const weekday = date.toLocaleDateString('de-CH', { weekday: 'short' });
+
+        if (index === 0) return `${weekday} Jetzt`;
+
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const tomorrow = new Date(today);
@@ -71,9 +73,9 @@ function formatDayLabel(dateStr, index) {
         dateNormalized.setHours(0, 0, 0, 0);
 
         if (dateNormalized.getTime() === today.getTime()) {
-            return 'Heute';
+            return `${weekday} Heute`;
         } else if (dateNormalized.getTime() === tomorrow.getTime()) {
-            return 'Morgen';
+            return `${weekday} Morgen`;
         }
 
         return date.toLocaleDateString('de-CH', { weekday: 'short', day: 'numeric' });
