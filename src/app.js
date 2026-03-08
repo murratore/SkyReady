@@ -501,6 +501,7 @@ class SkyReadyApp {
     }
 
     async refreshData() {
+        cacheService.clear();
         await this.loadWeatherData();
     }
 

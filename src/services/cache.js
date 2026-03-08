@@ -9,6 +9,33 @@ const DEFAULT_TTL = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
 class CacheService {
     constructor() {
         this.memoryCache = new Map();
+        // Invalidate any cache entries from a previous day
+        this._invalidateOldDayEntries();
+    }
+
+    /**
+     * Remove all cache entries whose stored date is not today.
+     * This prevents stale data from a previous session (e.g. Friday)
+     * being served when the user opens the app on a new day.
+     */
+    _invalidateOldDayEntries() {
+        const todayStr = new Date().toDateString();
+        try {
+            const keys = Object.keys(localStorage).filter(k => k.startsWith(CACHE_PREFIX));
+            for (const k of keys) {
+                try {
+                    const cached = JSON.parse(localStorage.getItem(k));
+                    const cachedDay = new Date(cached.timestamp).toDateString();
+                    if (cachedDay !== todayStr) {
+                        localStorage.removeItem(k);
+                    }
+                } catch {
+                    localStorage.removeItem(k);
+                }
+            }
+        } catch (e) {
+            console.warn('Cache day-invalidation error:', e);
+        }
     }
 
     /**
